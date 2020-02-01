@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.IO;
+using System.Threading.Tasks;
 
 namespace EmoBot.Client.Services
 {
@@ -6,6 +7,7 @@ namespace EmoBot.Client.Services
     {
         Task SetWebhookAsync();
         Task DeleteWebhookAsync();
-        Task SendMessage(long chatId, int replyToMessageId, string text);
+        Task SendMessageAsync(long chatId, int replyToMessageId, string text);
+        Task<FileInfo> DownloadFileAsync(string fileId);
     }
 }

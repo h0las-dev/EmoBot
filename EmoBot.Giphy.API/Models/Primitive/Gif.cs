@@ -1,4 +1,4 @@
-﻿namespace EmoBot.Giphy.API.Models
+﻿namespace EmoBot.Giphy.API.Models.Primitive
 {
     public class Gif
     {

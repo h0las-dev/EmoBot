@@ -19,7 +19,7 @@
     },
     "EmoBot.Client": {
       "commandName": "Project",
-      "launchBrowser": true,
+      "launchBrowser": false,
       "launchUrl": "api/updates",
       "applicationUrl": "https://localhost:443;http://localhost:80",
       "environmentVariables": {

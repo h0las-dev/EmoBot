@@ -7,7 +7,7 @@ namespace EmoBot.Client.Services.Data
 {
     public class CacheService
     {
-        private readonly IMongoCollection<Emoji> _emoji;
+        private readonly IMongoCollection<Sticker> _stickers;
         private readonly CacheOptions _cacheOptions;
 
         public CacheService(IOptions<CacheOptions> cacheOptions)
@@ -17,31 +17,31 @@ namespace EmoBot.Client.Services.Data
             var client = new MongoClient(_cacheOptions.ConnectionString);
             var database = client.GetDatabase(_cacheOptions.DatabaseName);
 
-            _emoji = database.GetCollection<Emoji>(_cacheOptions.CollectionName);
+            _stickers = database.GetCollection<Sticker>(_cacheOptions.CollectionName);
         }
 
-        public List<Emoji> Get() =>
-            _emoji.Find(emoji => true).ToList();
+        public List<Sticker> Get() =>
+            _stickers.Find(sticker => true).ToList();
 
-        public Emoji Get(string id) =>
-            _emoji.Find<Emoji>(emoji => emoji.Id == id).FirstOrDefault();
+        public Sticker Get(string id) =>
+            _stickers.Find<Sticker>(sticker => sticker.Id == id).FirstOrDefault();
 
-        public Emoji GetByValue(string emojiValue) =>
-            _emoji.Find<Emoji>(emoji => emoji.EmojiValue == emojiValue).FirstOrDefault();
+        public Sticker GetByUniqueFileId(string uniqueId) =>
+            _stickers.Find<Sticker>(sticker => sticker.UniqueStickerId == uniqueId).FirstOrDefault();
 
-        public Emoji Create(Emoji emoji)
+        public Sticker Create(Sticker sticker)
         {
-            _emoji.InsertOne(emoji);
-            return emoji;
+            _stickers.InsertOne(sticker);
+            return sticker;
         }
 
-        public void Update(string id, Emoji emojiIn) =>
-            _emoji.ReplaceOne(emoji => emoji.Id == id, emojiIn);
+        public void Update(string id, Sticker stickerIn) =>
+            _stickers.ReplaceOne(sticker => sticker.Id == id, stickerIn);
 
-        public void Remove(Emoji emojiIn) =>
-            _emoji.DeleteOne(emoji => emoji.Id == emojiIn.Id);
+        public void Remove(Sticker stickerIn) =>
+            _stickers.DeleteOne(sticker => sticker.Id == stickerIn.Id);
 
         public void Remove(string id) =>
-            _emoji.DeleteOne(emoji => emoji.Id == id);
+            _stickers.DeleteOne(sticker => sticker.Id == id);
     }
 }

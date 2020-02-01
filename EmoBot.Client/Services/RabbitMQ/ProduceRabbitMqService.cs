@@ -40,7 +40,7 @@ namespace EmoBot.Client.Services.RabbitMQ
             }
             catch (Exception ex)
             {
-                _logger.LogWarning($"Can not send a message to EmoBot.Converter: {ex.Message}");
+                _logger.LogWarning($"Can not send a message to converter service: {ex.Message}");
             }
             finally
             {

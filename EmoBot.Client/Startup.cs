@@ -25,7 +25,9 @@ namespace EmoBot.Client
             services.AddRabbit(Configuration);
             services.AddTelegramBot(Configuration);
             services.AddCacheService(Configuration);
-           
+            services.AddGiphy(Configuration);
+            services.AddConverter();
+
             services.AddSingleton<IUpdateService, UpdateService>();
         }
 

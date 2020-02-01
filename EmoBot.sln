@@ -5,9 +5,7 @@ VisualStudioVersion = 16.0.29503.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmoBot.Client", "EmoBot.Client\EmoBot.Client.csproj", "{159E3621-5B7A-49AC-AABD-BBDDB2B96873}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmoBot.Converter", "EmoBot.Converter\EmoBot.Converter.csproj", "{6A8FFB90-D828-4ADB-8B87-3D3DCF52EF11}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmoBot.Giphy.API", "EmoBot.Giphy.API\EmoBot.Giphy.API.csproj", "{2CDBD74D-2A14-441C-B844-BF34B9DC2D67}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmoBot.Giphy.API", "EmoBot.Giphy.API\EmoBot.Giphy.API.csproj", "{2CDBD74D-2A14-441C-B844-BF34B9DC2D67}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,10 +17,6 @@ Global
 		{159E3621-5B7A-49AC-AABD-BBDDB2B96873}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{159E3621-5B7A-49AC-AABD-BBDDB2B96873}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{159E3621-5B7A-49AC-AABD-BBDDB2B96873}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6A8FFB90-D828-4ADB-8B87-3D3DCF52EF11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6A8FFB90-D828-4ADB-8B87-3D3DCF52EF11}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6A8FFB90-D828-4ADB-8B87-3D3DCF52EF11}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6A8FFB90-D828-4ADB-8B87-3D3DCF52EF11}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2CDBD74D-2A14-441C-B844-BF34B9DC2D67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2CDBD74D-2A14-441C-B844-BF34B9DC2D67}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2CDBD74D-2A14-441C-B844-BF34B9DC2D67}.Release|Any CPU.ActiveCfg = Release|Any CPU

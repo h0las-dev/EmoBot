@@ -1,10 +1,11 @@
 ﻿using System.Threading.Tasks;
-using EmoBot.Giphy.API.Models;
+using EmoBot.Giphy.API.Models.RequestResults;
 
 namespace EmoBot.Giphy.API.Services
 {
     public interface IGiphyService
     {
-        Task<GiphySearchRequestResult> GetGifBasedOnSearchEmoji(string emoji, string token, string endpointUrl);
+        Task<UploadRequestResult> UploadFileAsync(byte[] file);
+        Task<GetGifRequestResult> GetGifAsync(string gifId);
     }
 }

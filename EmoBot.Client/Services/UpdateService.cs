@@ -28,32 +28,30 @@ namespace EmoBot.Client.Services
             var chatId = message.Chat.Id;
             var replyTo = message.MessageId;
 
-            if (!UserInputIsEmoji(message))
+            if (!UserInputIsSticker(message))
             {
-                await _bot.SendMessage(chatId, replyTo, 
-                    "Прости, но я понимаю только стандартные emoji ;c");
+                await _bot.SendMessageAsync(chatId, replyTo, "Кажется, это не стикер ;c");
 
                 return;
             }
 
-            var emoji = message.Text;
-
-            await SendResponseToUser(chatId, replyTo, emoji);
+            await SendResponseToUser(chatId, replyTo, message.Sticker.FileId, message.Sticker.FileUniqueId);
         }
 
-        private async Task SendResponseToUser(long chatId, int replyTo, string userEmojiInput)
+        private async Task SendResponseToUser(long chatId, int replyTo, string fileId, string uniqueFileId)
         {
-            var emojiFromCache = _cacheService.GetByValue(userEmojiInput);
+            var stickerFromCache = _cacheService.GetByUniqueFileId(uniqueFileId);
 
-            if (emojiFromCache != null)
+            if (stickerFromCache != null)
             {
-                await _bot.SendMessage(chatId, replyTo, emojiFromCache.GiphyUrl);
+                await _bot.SendMessageAsync(chatId, replyTo, stickerFromCache.GiphyUrl);
             }
             else
             {
-                var rabbitMessage = new EmojiRabbitDto
+                var rabbitMessage = new StickerRabbitDto
                 {
-                    EmojiValue = userEmojiInput,
+                    StickerId = fileId,
+                    StickerUniqueId = uniqueFileId,
                     GiphyUrl = "",
                     TelegramChatId = chatId,
                     TelegramMessageId = replyTo
@@ -67,9 +65,9 @@ namespace EmoBot.Client.Services
             }
         }
 
-        private bool UserInputIsEmoji(Message message)
+        private bool UserInputIsSticker(Message message)
         {
-            return message.Type == MessageType.Text && message.Text.ContainsEmoji();
+            return message.Type == MessageType.Sticker;
         }
     }
 }
